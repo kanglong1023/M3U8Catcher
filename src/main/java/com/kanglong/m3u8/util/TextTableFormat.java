@@ -177,7 +177,9 @@ public final class TextTableFormat {
             if (titlesFullWidthGate.get(col)) {
                 int titleFullWidthLength = getFullWidthLength(title);
 
-                columnPrintAttr.addFullWidthLength(0, titleFullWidthLength);
+                if (titleFullWidthLength > 0) {
+                    columnPrintAttr.addFullWidthLength(0, titleFullWidthLength);
+                }
                 columnPrintAttr.fullWidthMaxLength = titleFullWidthLength;
                 columnPrintAttr.columnMaxLength = titleLength - titleFullWidthLength;
             } else {
@@ -201,7 +203,9 @@ public final class TextTableFormat {
                     int fullWidthLength = getFullWidthLength(s);
                     int halfWidthLength = length - fullWidthLength;
 
-                    columnPrintAttr.addFullWidthLength(rowNum + 1, fullWidthLength);
+                    if (fullWidthLength > 0) {
+                        columnPrintAttr.addFullWidthLength(rowNum + 1, fullWidthLength);
+                    }
                     columnPrintAttr.columnMaxLength = Math.max(columnPrintAttr.columnMaxLength, halfWidthLength);
                     columnPrintAttr.fullWidthMaxLength = Math.max(columnPrintAttr.fullWidthMaxLength, fullWidthLength);
                 } else {

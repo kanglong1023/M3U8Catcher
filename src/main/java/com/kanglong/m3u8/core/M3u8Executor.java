@@ -199,8 +199,6 @@ public class M3u8Executor {
 
                 log.info("identity={} downloadOptions={}", m3u8Download.getIdentity(), options);
 
-                m3u8Download.notifyDownloadStart();
-
                 // download ts
                 CompletableFuture<Void> downloadTsFuture = downloadTs(tsDownloads, options);
 
