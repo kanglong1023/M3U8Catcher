@@ -6,7 +6,7 @@
     <property name="ABSOLUTE_LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-./log}/${app_name}/${LOG_FILE_NAME}-out.log}"/>
 
     <conversionRule conversionWord="clr"
-                    converterClass="com.kanglong.m3u8.support.log.ColorConverterWithMarkerWhiteboard"/>
+                    converterClass="io.github.kanglong1023.m3u8.support.log.ColorConverterWithMarkerWhiteboard"/>
 
     <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
