@@ -62,51 +62,50 @@ public class Main {
 plain download tasks can use the api of M3u8Downloads, just like:
 
 ```java
-import com.kanglong.m3u8.M3u8Downloads.M3u8HttpHeader;
-import com.kanglong.m3u8.core.M3u8Download;
-import com.kanglong.m3u8.core.M3u8DownloadBuilder;
-import com.kanglong.m3u8.M3u8Downloads;
+import io.github.kanglong1023.m3u8.M3u8Downloads.M3u8HttpHeader;
+import io.github.kanglong1023.m3u8.core.M3u8Download;
+import io.github.kanglong1023.m3u8.M3u8Downloads;
 
 public class Main {
 
-    public static void main(String[] args) {
-        String fileName = "video.mp4";
-        String saveDir = "/Users/kanglong1023/vd";
-        String url = "https://host/path/playlist.m3u8";
+  public static void main(String[] args) {
+    String fileName = "video.mp4";
+    String saveDir = "/Users/kanglong1023/vd";
+    String url = "https://host/path/playlist.m3u8";
 
-        // 1.download one
-        M3u8Downloads.downloadOne(url, fileName, saveDir);
+    // 1.download one
+    M3u8Downloads.downloadOne(url, fileName, saveDir);
 
-        // 2.carry cookie, the cookie will only be carried when requesting m3u8 content by default
-        String cookieStr = "****";
-        downloadOneCarryCookie(url, fileName, saveDir, cookieStr);
+    // 2.carry cookie, the cookie will only be carried when requesting m3u8 content by default
+    String cookieStr = "****";
+    downloadOneCarryCookie(url, fileName, saveDir, cookieStr);
 
-        // 3.custom http headers
-        downloadOne(url, fileName, saveDir,
-                M3u8HttpHeader.as("Accept", "*/*", null),
-                M3u8HttpHeader.as("Cache-Control", "no-cache", null)
-        );
+    // 3.custom http headers
+    downloadOne(url, fileName, saveDir,
+            M3u8HttpHeader.as("Accept", "*/*", null),
+            M3u8HttpHeader.as("Cache-Control", "no-cache", null)
+    );
 
-        // 4.download series
-        String fileName2 = "video2.mp4";
-        String url2 = "https://host/path/playlist2.m3u8";
-        downloadSeriesInUnitedDir(url, fileName, url2, fileName2, saveDir);
+    // 4.download series
+    String fileName2 = "video2.mp4";
+    String url2 = "https://host/path/playlist2.m3u8";
+    downloadSeriesInUnitedDir(url, fileName, url2, fileName2, saveDir);
 
-        // 5.customizing download parameters
-        M3u8Download m3u8Download = M3u8Download.builder()
-                .setUri(url)
-                .setFileName(fileName)
-                .setTargetFiletDir(saveDir)
-                .forceCacheAssignmentBasedOnFileName()
-                .build();
-        M3u8Download m3u8Download2 = newDownload(url2, fileName2, saveDir,
-                M3u8HttpHeader.as("Accept", "*/*", null),
-                M3u8HttpHeader.as("Cache-Control", "no-cache", null)
-        );
-        download(m3u8Download, m3u8Download2);
+    // 5.customizing download parameters
+    M3u8Download m3u8Download = M3u8Download.builder()
+            .setUri(url)
+            .setFileName(fileName)
+            .setTargetFiletDir(saveDir)
+            .forceCacheAssignmentBasedOnFileName()
+            .build();
+    M3u8Download m3u8Download2 = newDownload(url2, fileName2, saveDir,
+            M3u8HttpHeader.as("Accept", "*/*", null),
+            M3u8HttpHeader.as("Cache-Control", "no-cache", null)
+    );
+    download(m3u8Download, m3u8Download2);
 
-        // For more APIs, you can read the source code of the M3u8Downloads
-    }
+    // For more APIs, you can read the source code of the M3u8Downloads
+  }
 }
 ```
 
@@ -124,53 +123,51 @@ Customized parameters are mainly concentrated in these three classes: HttpReques
 
 ```java
 
-import com.kanglong.m3u8.M3u8Downloads;
-import com.kanglong.m3u8.core.M3u8Download;
-import com.kanglong.m3u8.core.TsDownloadOptionsSelector;
-import com.kanglong.m3u8.core.TsDownloadOptionsSelector.PlainTsDownloadOptionsSelector;
-import com.kanglong.m3u8.http.config.HttpRequestManagerConfig;
-import com.kanglong.m3u8.util.CollUtil;
+import io.github.kanglong1023.m3u8.M3u8Downloads;
+import io.github.kanglong1023.m3u8.core.M3u8Download;
+import io.github.kanglong1023.m3u8.core.TsDownloadOptionsSelector.PlainTsDownloadOptionsSelector;
+import io.github.kanglong1023.m3u8.http.config.HttpRequestManagerConfig;
 
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        HttpRequestManagerConfig managerConfig = HttpRequestManagerConfig.custom()
-                .maxConnPerRoute(10)
-                .overrideSystemProxy()
-                .build();
+    HttpRequestManagerConfig managerConfig = HttpRequestManagerConfig.custom()
+            .maxConnPerRoute(10)
+            .overrideSystemProxy()
+            .build();
 
-        PlainTsDownloadOptionsSelector optionsSelector = PlainTsDownloadOptionsSelector.optionsSelector(true, true);
+    PlainTsDownloadOptionsSelector optionsSelector = PlainTsDownloadOptionsSelector.optionsSelector(true, true);
 
-        String fileName = "video.mp4";
-        String fileName2 = "video.mp4";
-        String saveDir = "/Users/kanglong1023/vd";
-        String url = "https://host/path/playlist.m3u8";
-        String url2 = "https://host/path/playlist.m3u8";
+    String fileName = "video.mp4";
+    String fileName2 = "video.mp4";
+    String saveDir = "/Users/kanglong1023/vd";
+    String url = "https://host/path/playlist.m3u8";
+    String url2 = "https://host/path/playlist.m3u8";
 
-        M3u8Download m3u8Download = M3u8Download.builder()
-                .setUri(url)
-                .setFileName(fileName)
-                .setTargetFiletDir(saveDir)
-                .mergeWithoutConvertToMp4()
-                .forceCacheAssignmentBasedOnFileName()
-                .build();
-        M3u8Download m3u8Download2 = newDownload(url2, fileName2, saveDir,
-                M3u8HttpHeader.as("Accept", "*/*", null),
-                M3u8HttpHeader.as("Cache-Control", "no-cache", null)
-        );
+    M3u8Download m3u8Download = M3u8Download.builder()
+            .setUri(url)
+            .setFileName(fileName)
+            .setTargetFiletDir(saveDir)
+            .mergeWithoutConvertToMp4()
+            .forceCacheAssignmentBasedOnFileName()
+            .build();
+    M3u8Download m3u8Download2 = newDownload(url2, fileName2, saveDir,
+            M3u8HttpHeader.as("Accept", "*/*", null),
+            M3u8HttpHeader.as("Cache-Control", "no-cache", null)
+    );
 
-        List<M3u8Download> downloadList = new ArrayList<>();
+    List<M3u8Download> downloadList = new ArrayList<>();
 
-        downloadList.add(m3u8Download);
+    downloadList.add(m3u8Download);
 
-        downloadList.add(m3u8Download2);
+    downloadList.add(m3u8Download2);
 
-        M3u8Downloads.download(managerConfig, optionsSelector, downloadList);
+    M3u8Downloads.download(managerConfig, optionsSelector, downloadList);
 
-    }
+  }
 
 }
 
