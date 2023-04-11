@@ -113,6 +113,8 @@ public class M3u8Download {
     }
 
     public List<TsDownload> resolveTsDownloads(BiFunction<URI, HttpRequestConfig, ByteBuffer> bytesResponseGetter) {
+
+        notifyDownloadStart();
         TsDownloadPlanner tsDownloadPlanner = new TsDownloadPlanner(this, bytesResponseGetter);
 
         List<TsDownload> downloads = tsDownloadPlanner.plan();
@@ -126,7 +128,7 @@ public class M3u8Download {
         return newDownloads;
     }
 
-    public void notifyDownloadStart() {
+    private void notifyDownloadStart() {
         this.downloadBytes.reset();
         this.failedTsDownloads.reset();
         this.readingTsDownloads.clear();
