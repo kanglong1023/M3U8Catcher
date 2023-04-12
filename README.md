@@ -28,15 +28,15 @@ There was a requirement to download a large number of m3u8 live classes some tim
 - Support Master List（#EXT-X-STREAM-INF）
 - Support AES-128-CBC decryption,Supported key labels:#EXT-X-KEY和#EXT-X-SESSION-KEY
 - Support batch m3u8 concurrent download
-- Support http2, support custom request header, custom connection timeout, custom concurrent connection number (maxConnPerRoute)
-- Support retry, custom retry times, retry interval
-- Support custom http proxy, automatically use system proxy by default
-- Support breakpoint resuming, support caching intermediate results, and automatically delete the cache after the default completion
+- Support http2, support custom request header, connection timeout and max concurrent connection (maxConnPerRoute)
+- Support retry, custom retry times and retry interval
+- Support custom http proxy, use system proxy by default
+- Support breakpoint resuming, support caching intermediate results, after download is complete, the cache would be clear by default
 - Support to use ffmpeg to merge into mp4, or just do binary merge
-- Comes with ffmpeg compatible with all platforms, this machine does not need to install ffmpeg
+- Automatically import ffmpeg compatible with all platforms, so there is no need to install ffmpeg
 - Full use of nio, higher resource utilization when batch downloading
-- Support file asynchronous sink, asynchronous decryption, reduce the blocking of io thread
-- Support buffer pool to reduce memory allocation and gc times; customized object pool to reduce synchronization loss; use direct memory to reduce memory copy
+- Support file asynchronous sink, asynchronous decryption, then reduce the blocking of io thread
+- Support buffer pool to reduce memory allocation and gc times, the customized buffer pool also can lowering consumption of synchronization; using direct buffer to decrease memory copy
 
 ## Install
 
