@@ -19,7 +19,7 @@ public final class VideoUtil {
 
     private static class FfmpegPathHolder {
 
-        private static final boolean useLocalFfmpeg = Boolean.getBoolean("util.io.github.kanglong1023.m3u8.VideoUtil.useLocalFfmpeg");
+        private static final boolean useLocalFfmpeg = Boolean.getBoolean("io.github.kanglong1023.m3u8.util.VideoUtil.useLocalFfmpeg");
 
         private static final String ffmpegPath = loadFfmpegPath();
 

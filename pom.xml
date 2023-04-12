@@ -9,6 +9,30 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <name>M3U8 Catcher</name>
+    <url>https://github.com/kanglong1023/M3U8Catcher</url>
+    <description>A simple, high-performance m3u8 downloader suitable for batch task processing</description>
+
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <url>https://github.com/kanglong1023/M3U8Catcher/blob/main/LICENSE</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>git@github.com:kanglong1023/M3U8Catcher.git</url>
+        <connection>scm:git:git@github.com:pagehelper/Mybatis-PageHelper.git</connection>
+        <developerConnection>scm:git:git@github.com:pagehelper/Mybatis-PageHelper.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>kanglong1023</name>
+            <email>kanglong1023@126.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <logback.version>1.2.9</logback.version>
         <lombok.version>1.18.24</lombok.version>
@@ -22,7 +46,7 @@
         <ffmpeg.version>5.0</ffmpeg.version>
         <bytedeco.version>1.5.7</bytedeco.version>
         <bytedeco.cur.platform>macosx-x86_64</bytedeco.cur.platform>
-        <bytedeco-ffmpeg.version>5.0-${bytedeco.version}</bytedeco-ffmpeg.version>
+        <bytedeco-ffmpeg.version>${ffmpeg.version}-${bytedeco.version}</bytedeco-ffmpeg.version>
     </properties>
 
     <dependencies>
@@ -102,6 +126,89 @@
         -->
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>deploy</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                        <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <useReleaseProfile>false</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
