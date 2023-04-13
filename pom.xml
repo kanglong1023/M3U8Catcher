@@ -21,9 +21,9 @@
     </licenses>
 
     <scm>
-        <url>git@github.com:kanglong1023/M3U8Catcher.git</url>
-        <connection>scm:git:git@github.com:pagehelper/Mybatis-PageHelper.git</connection>
-        <developerConnection>scm:git:git@github.com:pagehelper/Mybatis-PageHelper.git</developerConnection>
+        <url>https://github.com/kanglong1023/M3U8Catcher</url>
+        <connection>scm:git:git://github.com/kanglong1023/M3U8Catcher.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/kanglong1023/M3U8Catcher.git</developerConnection>
     </scm>
 
     <developers>
