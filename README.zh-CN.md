@@ -1,7 +1,5 @@
 # M3U8Catcher
 
----
-
 ![](https://img.shields.io/badge/build-passing-brightgreen)
 ![GitHub](https://img.shields.io/github/license/kanglong1023/M3U8Catcher)
 ![](https://img.shields.io/badge/m3u8-downloader-orange)
@@ -10,11 +8,11 @@
 [![publish](https://img.shields.io/badge/publish-mvn--central-brightgreen)](https://central.sonatype.com/artifact/io.github.kanglong1023/m3u8-catcher)
 ![](https://img.shields.io/github/last-commit/kanglong1023/M3U8Catcher)
 
-> README [English](README.md) | 中文
-
 一个简单、高性能、适用于批量任务处理的m3u8资源下载器
 
 ![效果图](https://kanglong1023.github.io/source/M3U8Catcher/images/m3u8_catcher_example.gif)
+
+## README [English](README.md)
 
 ## 目录
 
