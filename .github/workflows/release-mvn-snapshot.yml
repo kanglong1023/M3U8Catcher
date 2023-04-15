@@ -8,7 +8,8 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
-        ref: 'develop'
+        with:
+          ref: 'develop'
 
       - name: Install Java and Maven
         uses: actions/setup-java@v3
