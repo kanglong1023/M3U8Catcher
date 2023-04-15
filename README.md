@@ -155,7 +155,7 @@ Alternatively, You can exclude ffmpeg dependencies if ffmpeg is installed on you
 
 The program finally use local ffmpeg to merge the videos.
 
-If you exclude ffmpeg dependencies and not installed on your local environment, try binary merge (`M3u8DownloadBuilder.mergeWithoutConvertToMp4())`). Most players support ts files.
+If you exclude dependencies and ffmpeg is not installed on your local environment, try binary merge (`M3u8DownloadBuilder.mergeWithoutConvertToMp4())`). Most players support ts files.
 
 ## Usage
 
@@ -174,7 +174,7 @@ public class Main {
 
 ### Quickstart
 
-plain download tasks can use the api of M3u8Downloads, just like:
+Plain download tasks can use the api of M3u8Downloads, just like:
 
 ```java
 import io.github.kanglong1023.m3u8.M3u8Downloads.M3u8HttpHeader;
