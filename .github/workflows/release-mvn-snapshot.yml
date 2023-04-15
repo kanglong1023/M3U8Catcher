@@ -31,4 +31,4 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USER }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }} -P deploy clean deploy
+        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }} -P snapshot,deploy clean deploy
