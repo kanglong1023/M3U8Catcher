@@ -53,7 +53,7 @@
 <dependency>
     <groupId>io.github.kanglong1023</groupId>
     <artifactId>m3u8-catcher</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -61,7 +61,7 @@
 
 ```groovy
 dependencies {
-    implementation 'io.github.kanglong1023:m3u8-catcher:1.0'
+    implementation 'io.github.kanglong1023:m3u8-catcher:1.0.0'
 }
 ```
 
@@ -82,7 +82,7 @@ dependencies {
         <dependency>
             <groupId>io.github.kanglong1023</groupId>
             <artifactId>m3u8-catcher</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.bytedeco</groupId>
@@ -143,7 +143,7 @@ dependencies {
 <dependency>
     <groupId>io.github.kanglong1023</groupId>
     <artifactId>m3u8-catcher</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <exclusions>
         <exclusion>
             <groupId>org.bytedeco</groupId>

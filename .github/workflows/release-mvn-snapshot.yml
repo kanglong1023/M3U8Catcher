@@ -5,6 +5,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: github.triggering_actor == github.repository.owner
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
