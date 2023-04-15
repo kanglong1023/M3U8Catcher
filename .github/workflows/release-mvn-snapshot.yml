@@ -5,10 +5,12 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: github.triggering_actor == github.repository.owner
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
-        ref: 'develop'
+        with:
+          ref: 'develop'
 
       - name: Install Java and Maven
         uses: actions/setup-java@v3
@@ -29,4 +31,4 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USER }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }} -P deploy clean deploy
+        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSWORD }} -P snapshot,deploy clean deploy
