@@ -53,7 +53,7 @@ There was a requirement to download a large number of m3u8 live classes some tim
 <dependency>
     <groupId>io.github.kanglong1023</groupId>
     <artifactId>m3u8-catcher</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -61,7 +61,7 @@ or use
 
 ```groovy
 dependencies {
-    implementation 'io.github.kanglong1023:m3u8-catcher:1.0'
+    implementation 'io.github.kanglong1023:m3u8-catcher:1.0.0'
 }
 ```
 
@@ -82,7 +82,7 @@ This could import ffmpeg for all platform. If you don't need platform compatibil
         <dependency>
             <groupId>io.github.kanglong1023</groupId>
             <artifactId>m3u8-catcher</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.bytedeco</groupId>
@@ -143,7 +143,7 @@ Alternatively, You can exclude ffmpeg dependencies if ffmpeg is installed on you
 <dependency>
     <groupId>io.github.kanglong1023</groupId>
     <artifactId>m3u8-catcher</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <exclusions>
         <exclusion>
             <groupId>org.bytedeco</groupId>
