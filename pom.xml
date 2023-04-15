@@ -6,7 +6,7 @@
 
     <groupId>io.github.kanglong1023</groupId>
     <artifactId>m3u8-catcher</artifactId>
-    <version>1.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>M3U8 Catcher</name>
